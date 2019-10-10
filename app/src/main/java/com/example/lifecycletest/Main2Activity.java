@@ -2,33 +2,29 @@ package com.example.lifecycletest;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity {
-	Button nextBtn;
-	String tag = "MainActivity";
+public class Main2Activity extends AppCompatActivity implements View.OnClickListener {
+	Button backBtn;
+	String tag = "Main2Activity";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+		setContentView(R.layout.activity_main2);
 
 		Log.d(tag, "onCreate()");
 
-		nextBtn = findViewById(R.id.nextBtn);
+		backBtn = findViewById(R.id.backBtn);
 
-		nextBtn.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View view) {
-				Intent intent = new Intent(getApplicationContext(), Main2Activity.class);
+		backBtn.setOnClickListener(this);
+	}
 
-				startActivity(intent);
-			}
-		});
+	public void onClick(View view) {
+		finish();
 	}
 
 	@Override
@@ -70,6 +66,6 @@ public class MainActivity extends AppCompatActivity {
 	protected void onDestroy() {
 		super.onDestroy();
 
-		Log.d(tag, "onDestory()");
+		Log.d(tag, "onDestroy()");
 	}
 }
